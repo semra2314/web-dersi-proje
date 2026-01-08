@@ -1,4 +1,12 @@
-# Node
+node_modules/
+**/node_modules/
+*.md
+*.markdown
+.DS_Store
+dist/
+build/
+.env
+env# Node
 node_modules/
 # Frontend
 frontend/node_modules/
