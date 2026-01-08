@@ -1,0 +1,8 @@
+{
+  "registerErr": "AggregateError: Error",
+  "loginErr": "AggregateError: Error",
+  "createCategoryErr": "AggregateError: Error",
+  "createBookErr": "AggregateError: Error",
+  "borrowErr": "AggregateError: Error",
+  "myBorrowsErr": "AggregateError: Error"
+}

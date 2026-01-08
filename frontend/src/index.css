@@ -1,0 +1,90 @@
+/* Genel stil: arayüzü sade tutar ve içeriği sayfanın ortasına yerleştirir.
+   Bu dosya basit bir görünüm için renk değişkenleri ve temel düzen kurallarını içerir.
+   (Yazılım bilmeyen biri için: bu dosya sayfanın nasıl görüneceğini belirler - renkler, boşluklar vb.) */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #666;
+  --accent: #2b6cb0;
+} 
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: #111;
+}
+
+/* App container centers content vertically and horizontally */
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Card-like centered content area */
+.content {
+  width: 100%;
+  max-width: 720px;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(10, 10, 15, 0.08);
+  padding: 28px;
+}
+
+/* Navigation */
+nav {
+  margin-bottom: 18px;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* Simple form layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+}
+
+label { font-weight: 600; font-size: 14px; }
+input[type="text"], input[type="password"], select {
+  padding: 8px 10px;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+h2 { margin: 0 0 12px 0; font-size: 28px; }
+
+/* Yardımcı mesaj stilleri (genel / başarı / hata)
+   - .message: genel bilgi metni
+   - .message.success: başarılı işlem mesajı (yeşil arkaplan)
+   - .message.error: hata mesajı (kırmızı arkaplan)
+   Bu sınıflar formlardaki kullanıcıya gösterilen uyarıları daha belirgin yapar. */
+.message { color: var(--muted); font-size: 14px; padding: 6px 8px; border-radius: 6px; }
+.message.success { background: #e6ffef; color: #07694a; border: 1px solid #b7f0d8; }
+.message.error { background: #fff0f0; color: #8a1f1f; border: 1px solid #f2c2c2; }
+
+@media (max-width: 600px) {
+  .content { padding: 18px; }
+  h2 { font-size: 22px; }
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <style>
+    .box{fill:#fff;stroke:#333;stroke-width:2}
+    .title{font:16px sans-serif;font-weight:bold}
+    .field{font:13px sans-serif}
+    .link{stroke:#333;stroke-width:2;fill:none}
+    .label{font:12px sans-serif;fill:#111}
+  </style>
+
+  <!-- User -->
+  <rect x="40" y="40" width="220" height="120" rx="8" class="box" />
+  <text x="150" y="64" text-anchor="middle" class="title">User</text>
+  <text x="60" y="92" class="field">id (PK)</text>
+  <text x="60" y="112" class="field">name (unique)</text>
+  <text x="60" y="132" class="field">email</text>
+  <text x="60" y="152" class="field">password</text>
+
+  <!-- Book -->
+  <rect x="340" y="40" width="240" height="140" rx="8" class="box" />
+  <text x="460" y="64" text-anchor="middle" class="title">Book</text>
+  <text x="360" y="94" class="field">id (PK)</text>
+  <text x="360" y="114" class="field">title</text>
+  <text x="360" y="134" class="field">author</text>
+  <text x="360" y="154" class="field">categoryId (FK) → Category.id</text>
+
+  <!-- Category -->
+  <rect x="640" y="40" width="220" height="90" rx="8" class="box" />
+  <text x="750" y="64" text-anchor="middle" class="title">Category</text>
+  <text x="660" y="92" class="field">id (PK)</text>
+  <text x="660" y="112" class="field">name</text>
+
+  <!-- Borrowing -->
+  <rect x="220" y="240" width="460" height="110" rx="8" class="box" />
+  <text x="450" y="264" text-anchor="middle" class="title">Borrowing</text>
+  <text x="240" y="294" class="field">id (PK)</text>
+  <text x="240" y="314" class="field">userId (FK) → User.id</text>
+  <text x="240" y="334" class="field">bookId (FK) → Book.id</text>
+  <text x="240" y="354" class="field">borrowDate</text>
+  <text x="240" y="374" class="field">returnedAt (nullable)</text>
+
+  <!-- Relations -->
+  <path d="M 140 160 L 360 160" class="link" />
+  <text x="250" y="150" text-anchor="middle" class="label">User 1 - N Borrowing</text>
+
+  <path d="M 460 180 L 350 240" class="link" />
+  <text x="405" y="210" text-anchor="middle" class="label">Book 1 - N Borrowing</text>
+
+  <path d="M 460 100 L 640 100" class="link" />
+  <text x="550" y="90" text-anchor="middle" class="label">Book N - 1 Category</text>
+
+  <!-- Footnote -->
+  <text x="40" y="500" class="field">Diagram: User, Book, Category, Borrowing ilişkileri (Borrowing: join-like entity with returnedAt)</text>
+</svg>
