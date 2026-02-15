@@ -1,0 +1,54 @@
+Sayın Öğr. Üyesi,
+
+Aşağıda "Kitap Ödünç Sistemi (CENG307)" projesinin kısa ve doğrudan raporu yer almaktadır. Ekran görüntüleri eklenmemiştir — bunları öğrenci daha sonra ekleyecektir. ER diyagramı proje altında `assets/er-diagram.svg` ve raster alternatif olarak `assets/er-diagram.png` (SVG içeriği olarak eklendi; gerçek raster PNG dönüşümü için yönerge aşağıda) dosyalarında mevcuttur.
+
+1) Proje Özeti
+- Adı: Kitap Ödünç Sistemi
+- Amaç: Basit rol tabanlı (user/admin) kütüphane ödünç sistemi; kullanıcılar kitap ödünç alabilir, adminler kategori ve kitap yönetebilir.
+- Teknoloji: Backend - NestJS (TypeORM, SQLite / Postgres opsiyonel), Frontend - React + Vite, Kimlik: JWT
+- Veri modeli: User, Book, Category, Borrowing (Borrowing: userId, bookId, borrowedAt, returnedAt)
+
+2) Önemli Özellikler
+- Kayıt (Register): name, email, password (password en az 6 karakter)
+- Giriş (Login): name + password (özet: login artık isim ile yapılmaktadır)
+- Rol tabanlı erişim: admin işlemleri JWT token içindeki role ile korunur
+- Ödünç alma (POST /borrowing) ve iade (POST /borrowing/:id/return)
+- Admin işlemleri: kategori ve kitap ekle/sil (sadece admin)
+
+3) Çalıştırma (Yerel)
+- Backend:
+  cd backend
+  npm install
+  npm run start:dev   # development server (default: http://localhost:3000)
+- Frontend:
+  cd frontend
+  npm install
+  npm run dev         # frontend (default: http://localhost:5173)
+
+4) Önemli Endpoints (özeti)
+- POST /auth/register  { name, email, password }
+- POST /auth/login     { name, password }
+- POST /auth/make-admin { name } (DEV-only, ALLOW_MAKE_ADMIN='true' olmalı)
+- GET /books
+- POST /books (admin)
+- GET /categories
+- POST /categories (admin)
+- POST /borrowing { bookId }
+- GET /borrowing (kullanıcının kendi ödünçleri)
+
+5) ER Diyagramı
+- ER diyagramı, proje kökünde `assets/er-diagram.svg` olarak eklidir; içerik: User, Book, Category, Borrowing ve ilişkileri gösterir.
+- Eğer siz/öğrenci PNG isterseniz, SVG'den raster PNG'ye dönüştürme komutları:
+  - ImageMagick (Windows): magick convert assets/er-diagram.svg assets/er-diagram.png
+  - rsvg-convert (Linux/macOS): rsvg-convert -o assets/er-diagram.png assets/er-diagram.svg
+
+6) Notlar / Bilgilendirme
+- Validation: Global ValidationPipe `whitelist: true` ve `forbidNonWhitelisted: true` şeklinde ayarlanmıştır; bu nedenle istek gövdesinde DTO'da tanımlı olmayan alanlar gönderilirse "property X should not exist" hatası döner.
+- Admin test hesabı (dev amaçlı): "ADMİN1" / "a123456" script ile oluşturulabilir veya `POST /auth/make-admin` dev-only endpoint'i kullanılarak yapılabilir (ALLOW_MAKE_ADMIN env değişkeni gereklidir).
+- Screenshots / E2E artefaktları repo içinde üretildi fakat teslimde istenmiyorsa bu dosyalar silinebilir; öğrenci istemiyle ben silme hazırlığı yapıp listelerini sunabilirim.
+
+7) İrtibat
+- Herhangi bir ek soru veya düzeltme talebiniz olursa lütfen bildiriniz; öğrenciden gelen son hali baz alarak ben raporu veya ER diyagramını güncelleyebilirim.
+
+Saygılarımla,
+Öğrenci Proje Yardımcısı (otomatik üretilmiş rapor)
