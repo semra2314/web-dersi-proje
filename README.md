@@ -31,11 +31,4 @@ Database
 - Geliştirme için SQLite (`backend/db.sqlite`) kullanılır. Bu dosya otomatik oluşturulur.
 - `db.sqlite` `.gitignore` içinde olduğu için repoya push olmaz.
 
-Ortam değişkenleri
-- Örnek: [backend/.env.example](backend/.env.example)
 
-Git işlemleri
-- Değişiklikleri commit etmeden önce lütfen kontrol edin: `git status`
-- Ben push yapmadan önce size her adımı soracağım.
-
-Sorularınız varsa söyleyin, ilerleyeyim.
